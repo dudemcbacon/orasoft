@@ -10,7 +10,7 @@ compinit
 promptinit
 colors
 
-export TERM=xterm
+export TERM=rxvt
 export PATH=/usr/jdk/latest/bin:/usr/local/bin:/usr/sfw/bin:/opt/sfw/bin:$PATH:/usr/ucb
 export TMOUT=
 
