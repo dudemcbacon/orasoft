@@ -1,2 +1,2 @@
-inventory_loc=/var/lib/oracle
+inventory_loc=/var/opt/oracle
 inst_group=dba

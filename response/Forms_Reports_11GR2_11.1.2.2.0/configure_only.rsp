@@ -5,20 +5,38 @@ Response File Version=1.0.0.0.0
 
 [GENERIC]
 
-#Set this to true if you wish to specify a directory where latest updates are downloaded. This option would use the software updates from the specified directory
-SPECIFY_DOWNLOAD_LOCATION=false
+#This option configures Forms and Reports Builders. OHS and Oracle Enterprise Management Agent are not included.Variable "CONFIGURE_FOR_DEPLOYMENT" must be set to false if this is set to true as the variables are mutually exclusive.
+CONFIGURE_FOR_DEVELOPMENT=false
 
-#
-SKIP_SOFTWARE_UPDATES=true
+#This option configures Forms and Reports Servers. OHS and Oracle Enterprise Management Agent are included.Variable "CONFIGURE_FOR_DEVELOPMENT" must be set to false if this is set to true as the variables are mutually exclusive.
+CONFIGURE_FOR_DEPLOYMENT=true
 
-#If the Software updates are already downloaded and available on your local system, then specify the path to the directory where these patches are available and set SPECIFY_DOWNLOAD_LOCATION to true
-SOFTWARE_UPDATES_DOWNLOAD_LOCATION=
+#Provide the My Oracle Support Username. If you wish to ignore Oracle Configuration Manager configuration provide empty string for user name.
+MYORACLESUPPORT_USERNAME=
 
-#Set this to true if installation and configuration need to be done, all other required variables need to be provided. Variable "INSTALL AND CONFIGURE LATER TYPE" must be set to false if this is set to true as the variables are mutually exclusive
-INSTALL AND CONFIGURE TYPE=true
+#Provide the My Oracle Support Password
+MYORACLESUPPORT_PASSWORD=
 
-#Set this to true if only Software only installation need to be done. If this is set to true then variable "INSTALL AND CONFIGURE TYPE" must be set to false, since the variables are mutually exclusive.
-INSTALL AND CONFIGURE LATER TYPE=false
+#Set this to true if you wish to decline the security updates. Setting this to true and providing empty string for My Oracle Support username will ignore the Oracle Configuration Manager configuration
+DECLINE_SECURITY_UPDATES=true
+
+#Set this to true if My Oracle Support Password is specified
+SECURITY_UPDATES_VIA_MYORACLESUPPORT=false
+
+#Provide the Proxy Host
+PROXY_HOST=
+
+#Provide the Proxy Port
+PROXY_PORT=
+
+#Provide the Proxy Username
+PROXY_USER=
+
+#Provide the Proxy Password
+PROXY_PWD=
+
+#Type String (URL format) Indicates the OCM Repeater URL which should be of the format [scheme[Http/Https]]://[repeater host]:[repeater port]
+COLLECTOR_SUPPORTHUB_URL=
 
 #Give the complete path to a valid Middleware Home with WebLogic Server installed.
 MW_HOME=/orasoft/product/middleware
@@ -34,12 +52,6 @@ INSTANCE_HOME=/orasoft/product/middleware/instances/<hostname>
 
 #Give a name for Oracle Instance corresponding to the Instance Home. The Oracle Instance name may only contain alphanumeric and underscore (_) characters, it must begin with an alphabetic (a-z or A-Z) character, and must be from 4 to 30 characters in length.
 INSTANCE_NAME=<hostname>
-
-#This option configures Forms and Reports Builders. OHS and Oracle Enterprise Management Agent are not included.Variable "CONFIGURE_FOR_DEPLOYMENT" must be set to false if this is set to true as the variables are mutually exclusive.
-CONFIGURE_FOR_DEVELOPMENT=false
-
-#This option configures Forms and Reports Servers. OHS and Oracle Enterprise Management Agent are included.Variable "CONFIGURE_FOR_DEVELOPMENT" must be set to false if this is set to true as the variables are mutually exclusive.
-CONFIGURE_FOR_DEPLOYMENT=true
 
 #Set this to true if you want to create a new domain, all other required variables need to be provided. If this is set to true then variables "EXTEND_DOMAIN" and "EXPAND_CLUSTER" must be set to false, since the variables are mutually exclusive.
 CREATE_DOMAIN=true
@@ -70,33 +82,6 @@ ADMIN_PASSWORD=fr11gr2TEST
 
 #Write the administrator password again to confirm.
 ADMIN_CONFIRM_PASSWORD=fr11gr2TEST
-
-#Provide the My Oracle Support Username. If you wish to ignore Oracle Configuration Manager configuration provide empty string for user name.
-MYORACLESUPPORT_USERNAME=
-
-#Provide the My Oracle Support Password
-MYORACLESUPPORT_PASSWORD=
-
-#Set this to true if you wish to decline the security updates. Setting this to true and providing empty string for My Oracle Support username will ignore the Oracle Configuration Manager configuration
-DECLINE_SECURITY_UPDATES=true
-
-#Set this to true if My Oracle Support Password is specified
-SECURITY_UPDATES_VIA_MYORACLESUPPORT=false
-
-#Provide the Proxy Host
-PROXY_HOST=
-
-#Provide the Proxy Port
-PROXY_PORT=
-
-#Provide the Proxy Username
-PROXY_USER=
-
-#Provide the Proxy Password
-PROXY_PWD=
-
-#Type String (URL format) Indicates the OCM Repeater URL which should be of the format [scheme[Http/Https]]://[repeater host]:[repeater port]
-COLLECTOR_SUPPORTHUB_URL=
 
 #Set this to true if you want the configuration wizard to assign the ports automatically.
 AUTOMATIC_PORT_DETECT=true
@@ -129,7 +114,7 @@ OID_HOST=
 OID_PORT=
 
 #Give the Application OID username.
-OID_USERNAME=cn=orcladmin
+OID_USERNAME=
 
 #Give the Application OID password.
 OID_PASSWORD=
@@ -158,7 +143,6 @@ OAM_PASSWORD=
 #Set this to true if you want to use OAM in SSL mode.
 OAM_USE_SSL=true
 
-
 [SYSTEM]
 
 
@@ -166,6 +150,7 @@ OAM_USE_SSL=true
 
 
 [RELATIONSHIPS]
+
 
 #Set this to true if you want to configure Oracle Forms
 CONFIGURE_FORMS=true
