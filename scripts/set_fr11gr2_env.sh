@@ -5,9 +5,9 @@
  
 # Edit these variables for each install.
  
-export DOMAIN_NAME=
-export INSTALL_NAME=ohs
-export INSTANCE_NAME=cpc-upass-ap03_instace
+export DOMAIN_NAME=`hostname`
+export INSTAL_NAME=fr11gr2_home
+export INSTANCE_NAME=`hostname`
  
 # Don't edit below here unless you know what you're doing...
  
