@@ -1,0 +1,2 @@
+inventory_loc=/var/lib/oracle
+inst_group=dba
