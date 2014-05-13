@@ -4,7 +4,7 @@
   
 # Place file in $DOMAIN_HOME/servers/AdminServer/security
    
-. ~/set_oracle_env.sh
+. /orasoft/scripts/set_fr11gr2_env.sh
 
 echo "Enter Username: "
 read username
