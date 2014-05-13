@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-. /orasoft/scripts/set_oracle_env.sh 
+. /orasoft/scripts/set_fr11gr2_env.sh 
 
 # Stop OPMN/OHS
 echo "Stopping OPMN managed componets (...)"
@@ -26,4 +26,4 @@ sleep 30
 
 # Stop NodeManager
 echo "Stopping NodeManager (...)"
-pkill -f startNodeManager.sh
+pkill java

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-. ~/set_oracle_env.sh
+. /orasoft/scripts/set_fr11gr2_env.sh
 
 # Start NodeManager
 echo "Starting NodeManager..."
 cd $DOMAIN_HOME/servers
-nohup $MIDDLEWARE_HOME/wlserver_10.3/server/bin/startNodeManager.sh wpc-nwo-ap02 5556 &
+nohup $MIDDLEWARE_HOME/wlserver_10.3/server/bin/startNodeManager.sh `hostname` 5556 &
 
 sleep 30
 
