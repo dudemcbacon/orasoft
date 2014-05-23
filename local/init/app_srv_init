@@ -1,8 +1,10 @@
 #!/bin/bash
 
+ARG=$1
+
 . /orasoft/scripts/set_fr11gr2_env.sh
 
-case "$1" in
+case "$ARG" in
   'start')
     # Start NodeManager
     echo "Starting NodeManager..."
@@ -12,7 +14,7 @@ case "$1" in
     sleep 30
 
     #start AdminServer
-    echo "Starting WebLogic..."
+    echo "Starting AdminServer..."
     cd $ADMINSERVER_LOGS
     nohup $DOMAIN_HOME/bin/startWebLogic.sh &
 
@@ -34,28 +36,30 @@ case "$1" in
 
     # Start OPMN/OHS
     echo "Starting OPMN managed components..."
-    $INSTANCE_HOME/bin/opmnctl startall
+    cd $DOMAIN_HOME/servers
+    nohup $INSTANCE_HOME/bin/opmnctl startall
     ;;
   'stop')
     # Stop OPMN/OHS
     echo "Stopping OPMN managed componets (...)"
-    $INSTANCE_HOME/bin/opmnctl stopall
+    cd $DOMAIN_HOME/servers
+    nohup $INSTANCE_HOME/bin/opmnctl stopall 
 
     echo "Stopping WLS_REPORTS managed server (...)"
     cd $REPORTS_LOGS
-    $DOMAIN_HOME/bin/stopManagedWebLogic.sh WLS_FORMS &
+    nohup $DOMAIN_HOME/bin/stopManagedWebLogic.sh WLS_FORMS &
 
     sleep 30
 
     echo "Stopping WLS_FORMS managed server (...)"
     cd $REPORTS_LOGS
-    $DOMAIN_HOME/bin/stopManagedWebLogic.sh WLS_REPORTS &
+    nohup $DOMAIN_HOME/bin/stopManagedWebLogic.sh WLS_REPORTS &
 
     sleep 30
 
     echo "Stopping AdminServer (...)"
     cd $ADMINSERVER_LOGS
-    $DOMAIN_HOME/bin/stopWebLogic.sh
+    nohup $DOMAIN_HOME/bin/stopWebLogic.sh &
 
     sleep 30
 
